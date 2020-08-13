@@ -1,6 +1,6 @@
 package com.example.cloud.pay.dao;
 
-import com.example.cloud.pay.entity.Payment;
+import com.example.cloud.common.entity.Payment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

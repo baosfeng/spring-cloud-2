@@ -1,4 +1,4 @@
-package com.example.cloud.order.result;
+package com.example.cloud.common.entity;
 
 import org.springframework.http.HttpStatus;
 

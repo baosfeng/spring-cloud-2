@@ -1,7 +1,7 @@
 package com.example.cloud.pay.service.impl;
 
+import com.example.cloud.common.entity.Payment;
 import com.example.cloud.pay.dao.PaymentDao;
-import com.example.cloud.pay.entity.Payment;
 import com.example.cloud.pay.service.PaymentService;
 import org.springframework.stereotype.Service;
 

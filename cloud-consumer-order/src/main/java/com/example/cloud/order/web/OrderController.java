@@ -1,7 +1,7 @@
 package com.example.cloud.order.web;
 
-import com.example.cloud.order.entity.Payment;
-import com.example.cloud.order.result.Result;
+import com.example.cloud.common.entity.Payment;
+import com.example.cloud.common.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

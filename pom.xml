@@ -10,6 +10,7 @@
 	<modules>
 		<module>cloud-provider-pay</module>
 		<module>cloud-consumer-order</module>
+		<module>cloud-common</module>
 	</modules>
 	<!-- 统一管理jar包版本 -->
 	<properties>

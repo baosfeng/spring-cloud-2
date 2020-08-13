@@ -1,4 +1,4 @@
-package com.example.cloud.pay.entity;
+package com.example.cloud.common.entity;
 
 import java.io.Serializable;
 
