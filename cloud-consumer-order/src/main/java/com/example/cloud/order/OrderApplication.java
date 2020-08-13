@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 //通过开启此服务，便可以实现微服务注册
@@ -14,6 +15,8 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 @EnableDiscoveryClient
 //配置对指定的微服务使用自定义的规则
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MyRoundRule.class)
+//开启Feign配置
+@EnableFeignClients
 public class OrderApplication {
 
 	public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.example.cloud.order.web;
 import com.example.cloud.common.entity.Payment;
 import com.example.cloud.common.entity.Result;
 import com.example.cloud.order.config.LoadBalance;
+import com.example.cloud.order.service.IPaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -34,6 +35,9 @@ public class OrderController {
 	@Resource
 	private LoadBalance loadBalance;
 
+	@Resource
+	private IPaymentService paymentService;
+
 	@GetMapping("/save")
 	public Result create(Payment payment) {
 		//写操作
@@ -59,6 +63,18 @@ public class OrderController {
 			return Result.error();
 		}
 		return restTemplate.getForObject(instance.getUri() + "/payment/select/" + id, Result.class);
+	}
+
+	/**
+	 * 通过feign进行远程接口的调取
+	 * 默认feign自带负载均衡配置器
+	 *
+	 * @param id 带查询的id
+	 * @return
+	 */
+	@GetMapping("/feign/{id}")
+	public Result getByFeign(@PathVariable("id") Long id) {
+		return paymentService.selectOne(id);
 	}
 
 	/**
