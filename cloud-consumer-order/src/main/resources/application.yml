@@ -24,4 +24,6 @@ ribbon:
   ReadTimeout:  5000
   # 设置最大连接时间
   ConnectTimeout: 5000
-
+logging:
+  level:
+    com.example.cloud.order.service.IPaymentService: debug
