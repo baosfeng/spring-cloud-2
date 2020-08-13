@@ -77,6 +77,12 @@ public class OrderController {
 		return paymentService.selectOne(id);
 	}
 
+
+	@GetMapping("/feign/timeout")
+	public Result timeout() {
+		return paymentService.timeout();
+	}
+
 	/**
 	 * 获得所有的注册微服务信息
 	 *

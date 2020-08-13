@@ -12,4 +12,7 @@ public interface IPaymentService {
 
 	@GetMapping("/payment/select/{id}")
 	Result selectOne(@PathVariable Long id);
+
+	@GetMapping("/payment/timeout")
+	Result timeout();
 }

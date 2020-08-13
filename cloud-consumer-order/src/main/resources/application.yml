@@ -19,3 +19,9 @@ eureka:
     lease-renewal-interval-in-seconds:  1
     # 服务端等待心跳的最长时间
     lease-expiration-duration-in-seconds:  2
+ribbon:
+  # 配置Feign的连接时间，默认1秒钟不回复，就会报错
+  ReadTimeout:  5000
+  # 设置最大连接时间
+  ConnectTimeout: 5000
+

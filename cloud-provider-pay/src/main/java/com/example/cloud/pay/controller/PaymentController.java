@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * (Payment)表控制层
@@ -55,4 +56,10 @@ public class PaymentController {
 				: Result.error();
 	}
 
+
+	@GetMapping("timeout")
+	public Result timeout() throws InterruptedException {
+		TimeUnit.SECONDS.sleep(3);
+		return Result.ok();
+	}
 }
