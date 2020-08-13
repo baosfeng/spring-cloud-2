@@ -29,8 +29,8 @@ public class PaymentController {
 	 * @param id 主键
 	 * @return 单条数据
 	 */
-	@GetMapping("select")
-	public Result selectOne(Long id) {
+	@GetMapping("select/{id}")
+	public Result selectOne(@PathVariable Long id) {
 		Payment payment = this.paymentService.queryById(id);
 		return payment != null
 				? Result.ok().put("data", payment)

@@ -9,6 +9,7 @@
 	<version>1.0.0</version>
 	<modules>
 		<module>cloud-provider-pay</module>
+		<module>cloud-consumer-order</module>
 	</modules>
 	<!-- 统一管理jar包版本 -->
 	<properties>
