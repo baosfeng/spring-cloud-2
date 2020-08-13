@@ -8,8 +8,14 @@ eureka:
     register-with-eureka: true
     fetchRegistry: true
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      # defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      # 单机模式
+      defaultZone: http://eureka7001.com:7001/eureka
   instance:
     instance-id: ${spring.application.name}:${server.port}
     # 优先使用IP而不是其他方式（比如微服务名称）显示
     prefer-ip-address: true
+    # 发送心跳的时间间隔
+    lease-renewal-interval-in-seconds:  1
+    # 服务端等待心跳的最长时间
+    lease-expiration-duration-in-seconds:  2
