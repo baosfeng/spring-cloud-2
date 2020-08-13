@@ -2,6 +2,7 @@ package com.example.cloud.order.web;
 
 import com.example.cloud.common.entity.Payment;
 import com.example.cloud.common.entity.Result;
+import com.example.cloud.order.config.LoadBalance;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -30,6 +31,9 @@ public class OrderController {
 	@Resource
 	private RestTemplate restTemplate;
 
+	@Resource
+	private LoadBalance loadBalance;
+
 	@GetMapping("/save")
 	public Result create(Payment payment) {
 		//写操作
@@ -39,6 +43,22 @@ public class OrderController {
 	@GetMapping("/select/{id}")
 	public Result getPayment(@PathVariable("id") Long id) {
 		return restTemplate.getForObject(PAYMENT_URL + "/payment/select/" + id, Result.class);
+	}
+
+	/**
+	 * 自定义轮询访问
+	 *
+	 * @param id 带查询的id
+	 * @return
+	 */
+	@GetMapping("/get/{id}")
+	public Result get(@PathVariable("id") Long id) {
+		List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+		ServiceInstance instance = loadBalance.instance(instances);
+		if (instance == null) {
+			return Result.error();
+		}
+		return restTemplate.getForObject(instance.getUri() + "/payment/select/" + id, Result.class);
 	}
 
 	/**
