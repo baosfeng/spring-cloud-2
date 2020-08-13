@@ -3,6 +3,7 @@ package com.example.cloud.pay.controller;
 import com.example.cloud.common.entity.Payment;
 import com.example.cloud.common.entity.Result;
 import com.example.cloud.pay.service.PaymentService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,6 +17,9 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("payment")
 public class PaymentController {
+
+	@Value("${server.port}")
+	private int serverPort;
 
 	/**
 	 * 服务对象
@@ -33,7 +37,7 @@ public class PaymentController {
 	public Result selectOne(@PathVariable Long id) {
 		Payment payment = this.paymentService.queryById(id);
 		return payment != null
-				? Result.ok().put("data", payment)
+				? Result.ok().put("data", payment).put("port", serverPort)
 				: Result.error();
 	}
 
