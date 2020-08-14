@@ -4,7 +4,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient("CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+/**
+ * 异常统一交给实现类进行处理
+ */
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT", fallback = PaymentHystrixServiceImpl.class)
 public interface IPaymentHystrixService {
 
 	@GetMapping("/payment/hystrix/ok/{id}")
