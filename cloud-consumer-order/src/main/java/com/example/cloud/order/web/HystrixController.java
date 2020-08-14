@@ -2,6 +2,7 @@ package com.example.cloud.order.web;
 
 import com.example.cloud.common.entity.Result;
 import com.example.cloud.order.service.IPaymentHystrixService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
 
 @Slf4j
 @RestController
+@DefaultProperties(defaultFallback = "globalFallBack")
 public class HystrixController {
 
 	@Resource
@@ -35,8 +37,23 @@ public class HystrixController {
 		return Result.ok().put("result", result);
 	}
 
-
 	public Result paymentInfoTimeOutHandler(Integer id) {
 		return Result.error().put("message", "客户端系统繁忙，请稍候再试！");
+	}
+
+	@HystrixCommand
+	@GetMapping("/consumer/hystrix/global/timeout/{id}")
+	public Result paymentServerTimeOut(@PathVariable("id") Integer id) {
+		String result = paymentHystrixService.paymentInfoTimeOut(id);
+		return Result.ok().put("result", result);
+	}
+
+	/**
+	 * 配置的全局熔断处理器，不能携带参数
+	 *
+	 * @return 熔断异常信息
+	 */
+	public Result globalFallBack() {
+		return Result.error().put("message", "全局繁忙，请稍候再试！");
 	}
 }
