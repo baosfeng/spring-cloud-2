@@ -27,6 +27,14 @@ public class PaymentController {
 		String result = paymentService.paymentInfoTimeOut(id);
 		return Result.ok().put("result", result);
 	}
+
+	//服务熔断
+	@GetMapping("/payment/hystrix/circuit/{id}")
+	public Result paymentCircuitBreaker(@PathVariable("id") Integer id) {
+		String result = paymentService.paymentCircuitBreaker(id);
+		return Result.ok().put("result", result);
+	}
+
 }
 
 
