@@ -18,7 +18,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MyRoundRule.class)
 //开启Feign配置
 @EnableFeignClients
-//处理客户端自身熔断
+//处理客户端自身降级
 @EnableHystrix
 public class OrderApplication {
 

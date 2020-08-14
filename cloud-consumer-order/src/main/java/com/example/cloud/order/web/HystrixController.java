@@ -49,9 +49,9 @@ public class HystrixController {
 	}
 
 	/**
-	 * 配置的全局熔断处理器，不能携带参数
+	 * 配置的全局降级处理器，不能携带参数
 	 *
-	 * @return 熔断异常信息
+	 * @return 降级异常信息
 	 */
 	public Result globalFallBack() {
 		return Result.error().put("message", "全局繁忙，请稍候再试！");

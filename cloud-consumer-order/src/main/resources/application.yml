@@ -29,6 +29,6 @@ logging:
     com.example.cloud.order.service.IPaymentService: debug
 feign:
   hystrix:
-    # 处理客户端的熔断
+    # 处理客户端的降级
     # 如果处理自身的容错就开启。开启方式与生产端不一样。
     enabled: true
