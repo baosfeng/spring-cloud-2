@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * @author bsfeng
+ */
 @Slf4j
 @RestController
 @DefaultProperties(defaultFallback = "globalFallBack")
@@ -21,9 +24,9 @@ public class HystrixController {
 	private IPaymentHystrixService paymentHystrixService;
 
 	@GetMapping("/consumer/hystrix/ok/{id}")
-	public Result paymentInfoOK(@PathVariable("id") Integer id) {
+	public Result paymentInfoSuccess(@PathVariable("id") Integer id) {
 		log.info("Hello");
-		String result = paymentHystrixService.paymentInfoOK(id);
+		String result = paymentHystrixService.paymentInfoSuccess(id);
 		return Result.ok().put("result", result);
 	}
 

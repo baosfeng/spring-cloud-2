@@ -9,16 +9,20 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * EnableEurekaClient 通过开启此服务，便可以实现微服务注册
+ * EnableDiscoveryClient 通过开启此服务，就可以通过discoveryClient获得远程微服务信息
+ * RibbonClient 配置对指定的微服务使用自定义的规则
+ * EnableFeignClients 开启Feign配置
+ * EnableHystrix 处理客户端自身降级
+ *
+ * @author bsfeng
+ */
 @SpringBootApplication
-//通过开启此服务，便可以实现微服务注册
 @EnableEurekaClient
-//通过开启此服务，就可以通过discoveryClient获得远程微服务信息
 @EnableDiscoveryClient
-//配置对指定的微服务使用自定义的规则
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MyRoundRule.class)
-//开启Feign配置
 @EnableFeignClients
-//处理客户端自身降级
 @EnableHystrix
 public class OrderApplication {
 

@@ -7,15 +7,28 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author bsfeng
+ */
 @Service
 public class PaymentService {
 
-	//成功
-	public String paymentInfoOK(Integer id) {
+	/**
+	 * 支付 成功
+	 *
+	 * @param id
+	 * @return
+	 */
+	public String paymentInfoSuccess(Integer id) {
 		return "线程池：" + Thread.currentThread().getName() + "   paymentInfoOK,id：  " + id + "\t" + "哈哈哈";
 	}
 
-	//失败
+	/**
+	 * 支付失败
+	 *
+	 * @param id
+	 * @return
+	 */
 	@HystrixCommand(fallbackMethod = "paymentInfoTimeOutHandler", commandProperties = {
 			//2秒钟以内就是正常的业务逻辑
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
@@ -53,7 +66,7 @@ public class PaymentService {
 		return Thread.currentThread().getName() + "\t" + "调用成功,流水号：" + serialNumber;
 	}
 
-	public String paymentCircuitBreaker_fallback(Integer id) {
+	public String paymentCircuitBreakerFallback(Integer id) {
 		return "触发服务熔断，一段时间内不再进行响应，当前请求的id为" + id;
 	}
 

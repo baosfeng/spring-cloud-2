@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * @author bsfeng
+ */
 @Component
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
 public interface IPaymentService {

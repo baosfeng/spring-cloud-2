@@ -1,12 +1,14 @@
 package com.example.cloud.order.service;
 
 import org.springframework.stereotype.Service;
-
+/**
+ * @author bsfeng
+ */
 @Service
 public class PaymentHystrixServiceImpl implements IPaymentHystrixService {
 
 	@Override
-	public String paymentInfoOK(Integer id) {
+	public String paymentInfoSuccess(Integer id) {
 		return "paymentInfoOK 的错误处理";
 	}
 

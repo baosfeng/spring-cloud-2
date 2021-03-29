@@ -18,12 +18,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author bsfeng
+ */
 @Slf4j
 @RestController
 @RequestMapping("/consumer/payment")
 public class OrderController {
 
-	//动态获取地址
+	/**
+	 * 动态获取地址
+	 */
 	public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
 	@Resource
@@ -92,9 +97,9 @@ public class OrderController {
 	public Result getInstance() {
 		List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
 		Result result = new Result();
-		ArrayList<HashMap> list = new ArrayList<>();
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
 		instances.forEach(item -> {
-			HashMap<String, Object> map = new HashMap<>();
+			HashMap<String, Object> map = new HashMap<>(16);
 			map.put("host", item.getHost());
 			map.put("port", item.getPort());
 			map.put("Metadata", item.getMetadata());
