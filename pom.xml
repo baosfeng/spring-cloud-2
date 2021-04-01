@@ -14,6 +14,8 @@
 		<module>cloud-eureka-server</module>
 		<module>cloud-eureka-server-dup</module>
 		<module>cloud-hystrix-provider-pay</module>
+		<module>cloud-stream-producer</module>
+		<module>cloud-stream-consumer</module>
 	</modules>
 	<!-- 统一管理jar包版本 -->
 	<properties>
