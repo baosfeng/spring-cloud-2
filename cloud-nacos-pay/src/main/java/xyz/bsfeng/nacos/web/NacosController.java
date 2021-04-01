@@ -14,7 +14,7 @@ public class NacosController {
 	@Value("${server.port}")
 	private String port;
 
-	@GetMapping("/")
+	@GetMapping("/port")
 	public String getPort() {
 		return port;
 	}
