@@ -16,6 +16,8 @@
 		<module>cloud-hystrix-provider-pay</module>
 		<module>cloud-stream-producer</module>
 		<module>cloud-stream-consumer</module>
+		<module>cloud-nacos-pay</module>
+		<module>cloud-nacos-order</module>
 	</modules>
 	<!-- 统一管理jar包版本 -->
 	<properties>
