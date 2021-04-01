@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: cloud-order-service
+  zipkin:
+    base-url: http://159.75.122.3:9411/ #zipkin服务的地址
+  sleuth:
+    sampler:
+      #请求的采样率，在测试时为了方便查看可以改为1表示所有请求都记录，但在生产环境中还是建议改为0.1，否则数量太多影响性能
+      probability: 1.0
 eureka:
   client:
     register-with-eureka: true

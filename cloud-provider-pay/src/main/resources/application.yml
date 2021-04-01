@@ -10,6 +10,13 @@ spring:
     url: jdbc:mysql://159.75.122.3:3306/cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&Timezone=Asia/Shanghai
     username: root
     password: 123123
+  zipkin:
+    #zipkin服务的地址
+    base-url: http://159.75.122.3:9411/
+  sleuth:
+    sampler:
+      #请求的采样率，在测试时为了方便查看可以改为1表示所有请求都记录，但在生产环境中还是建议改为0.1，否则数量太多影响性能
+      probability: 1.0
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
