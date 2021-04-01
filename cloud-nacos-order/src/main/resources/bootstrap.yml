@@ -1,0 +1,20 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: nacos-order
+  cloud:
+    nacos:
+      discovery:
+        #配置Nacos地址
+        server-addr: 159.75.122.3:8848
+      config:
+        #配置中心地址
+        server-addr: 159.75.122.3:8848
+        #指定yaml格式的配置
+        file-extension: yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
