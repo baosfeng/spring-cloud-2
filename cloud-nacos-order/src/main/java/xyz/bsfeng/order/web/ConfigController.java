@@ -18,4 +18,14 @@ public class ConfigController {
 	public String getConfigName() {
 		return configName;
 	}
+
+	@GetMapping("/a")
+	public String a() {
+		return "a";
+	}
+
+	@GetMapping("/b")
+	public String b() {
+		return "b";
+	}
 }
