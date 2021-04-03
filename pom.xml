@@ -18,6 +18,9 @@
 		<module>cloud-stream-consumer</module>
 		<module>cloud-nacos-pay</module>
 		<module>cloud-nacos-order</module>
+		<module>seata-order</module>
+		<module>seata-storage</module>
+		<module>seata-account</module>
 	</modules>
 	<!-- 统一管理jar包版本 -->
 	<properties>
